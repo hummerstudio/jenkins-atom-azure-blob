@@ -1,0 +1,12 @@
+{
+  "name": "Upload to Azure Blob Storage",
+  "summary": "Uploads build outputs to an Azure Blob container with a SharedKey signature.",
+  "author": "hummerstudio",
+  "license": "MIT",
+  "tags": [
+    "official-port",
+    "azure",
+    "storage"
+  ],
+  "homepage": "https://github.com/hummerstudio/jenkins-atom-azure-blob"
+}

@@ -1,0 +1,95 @@
+{
+  "atomCode": "azure-blob",
+  "name": "Upload to Azure Blob Storage",
+  "version": "1.0.0",
+  "description": "Uploads build outputs to an Azure Blob container with a SharedKey signature.",
+  "execution": {
+    "packagePath": "azure-blob.jar",
+    "language": "java",
+    "target": "$atom_java_path -cp azure-blob.jar com.jenkinschina.atom.sdk.AtomRunner"
+  },
+  "input": {
+    "account": {
+      "label": "存储账户名",
+      "type": "vuex-input",
+      "default": ""
+    },
+    "accountKey": {
+      "label": "账户密钥",
+      "type": "password",
+      "default": ""
+    },
+    "container": {
+      "label": "容器名",
+      "type": "vuex-input",
+      "default": ""
+    },
+    "files": {
+      "label": "要上传的文件（逗号分隔的 glob）",
+      "type": "vuex-input",
+      "default": "**/*.jar"
+    },
+    "blobPrefix": {
+      "label": "blob 前缀（留空则保留相对路径）",
+      "type": "vuex-input",
+      "default": ""
+    },
+    "contentType": {
+      "label": "Content-Type（留空按扩展名）",
+      "type": "vuex-input",
+      "default": ""
+    },
+    "endpoint": {
+      "label": "自定义端点（如 http://127.0.0.1:8080）",
+      "type": "vuex-input",
+      "default": ""
+    },
+    "overwrite": {
+      "label": "允许覆盖",
+      "type": "checkbox",
+      "default": "true"
+    },
+    "timeoutSeconds": {
+      "label": "超时（秒）",
+      "type": "vuex-input",
+      "default": "120"
+    },
+    "failOnError": {
+      "label": "上传失败就让这一步失败",
+      "type": "checkbox",
+      "default": "true"
+    }
+  },
+  "output": {
+    "uploaded": {
+      "type": "string",
+      "description": "成功上传的 blob 数"
+    },
+    "failed": {
+      "type": "string",
+      "description": "失败数（failOnError=false 时才可能非零）"
+    },
+    "bytes": {
+      "type": "string",
+      "description": "上传字节数"
+    },
+    "container": {
+      "type": "string",
+      "description": "容器名"
+    },
+    "first": {
+      "type": "string",
+      "description": "第一个 blob 的 URL"
+    },
+    "urls": {
+      "type": "string",
+      "description": "全部 URL（最多 20 行）"
+    }
+  },
+  "x-jenkins": {
+    "protocol": "jenkins-1",
+    "requires": {
+      "runner": ">=0.4.0"
+    }
+  }
+}
